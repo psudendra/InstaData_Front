@@ -7,6 +7,13 @@ var myRegex = /((([h]+[t]+[t]+[p])+(\S)+([j]+[p]+[g]))|(([h]+[t]+[t]+[p])+(\S)+(
 var server = http.createServer(
 function( request, response ){
 
+res.writeHead(200, {
+    'Content-Type': 'text/html',
+    'Content-Length': html.length,
+    'Expires': new Date().toUTCString()
+  });
+res.end(html);
+
 //lets require/import the mongodb native drivers.
 var mongodb = require('mongodb');
 
@@ -20,7 +27,8 @@ var url = 'mongodb://localhost:27017/insta_data';
 MongoClient.connect(url, function (err, db) {
   if (err) {
     console.log('Unable to connect to the mongoDB server. Error:', err);
-  } else {
+  } 
+  else {
     //HURRAY!! We are connected. :)
     console.log('Connection established to', url);
 
@@ -32,18 +40,27 @@ MongoClient.connect(url, function (err, db) {
     collection.findOne({},function (err, result) {
       if (err) {
         console.log(err);
-      } else if (result) {
-        console.log('Found:', result);
-	for (var i=0; i<result.current.length; i++) {
-response.write(result['current'][i][1]+' \n');}
-response.end();      
-} else {
-        console.log('No document(s) found with defined "find" criteria!');
       }
+       else if (result) {
+         console.log('Found:', result);
+	 for (var i=0; i<result.current.length; i++) {
+           response.write(result['current'][i][1]+' \n');
+         }
+         response.end();
+       }
+    } 
+    else {
+      console.log('No document(s) found with defined "find" criteria!');
+    }
+
+}
+}
+function buildHtml(req) {
+   var body = "<img src='" + current + "'>";
+  return '<DOCTYPE html>' + '<html><header></header>' + body +'</body></html>';
       //Close connection
-      db.close();
-    });
-  }
+   db.close();
+  });
 });
 });
     // Regex

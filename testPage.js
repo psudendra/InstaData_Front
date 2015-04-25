@@ -32,12 +32,14 @@ MongoClient.connect(url, function (err, db) {
     //cursor.forEach(function(row){results.push(row.imageurl)});
     //console.log(results);
     //get_imageurl = function(doc) { return doc.imageurl; }
+    var json = collection.find({},{imageurl:1, _id:0}).toArray().toJSON();
+    console.log(json);
     collection.find({}, {imageurl:1, _id:0}).toArray(function(err, result){
 	if (err){
 		console.log(err);
 		}
-	else if (result.length){
-		console.log(result[].imageurl);
+	else {
+		//console.log(result[].imageurl);
 		}
       //Close connection
       db.close();
