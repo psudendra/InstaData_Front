@@ -6,6 +6,7 @@ var myRegex = /((([h]+[t]+[t]+[p])+(\S)+([j]+[p]+[g]))|(([h]+[t]+[t]+[p])+(\S)+(
 // Create our HTTP server.
 var server = http.createServer(
 function( request, response ){
+  response.writeHead(200, {"Content-Type" : "text/html"});
 
   //lets require/import the mongodb native drivers.
   var mongodb = require('mongodb');
@@ -14,7 +15,7 @@ function( request, response ){
   var MongoClient = mongodb.MongoClient;
 
   // Connection URL. This is where your mongodb server is running.
-  var url = 'mongodb://localhost:27017/insta_data';
+  var url = 'mongodb://ec2-52-10-211-62.us-west-2.compute.amazonaws.com/insta_data';
 
   // Use connect method to connect to the Server
   MongoClient.connect(url, function (err, db) {
@@ -37,7 +38,7 @@ function( request, response ){
         }
         else if (result) {
           for (var i=0; i<result.current.length; i++) {
-            response.write(result['current'][i][1]+' \n');
+            response.write('<img src="' + result['current'][i][1] + '">' + ' \n');
           }
 
           response.end();
@@ -46,10 +47,11 @@ function( request, response ){
         else {
         console.log('No document(s) found with defined "find" criteria!');
         }
+
+
+      db.close();
       });
     };
-    db.close();
-    
   });
 });
 // Regex
