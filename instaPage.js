@@ -34,8 +34,10 @@ MongoClient.connect(url, function (err, db) {
         console.log(err);
       } else if (result) {
         console.log('Found:', result);
-	response.write(result['current'][1][1]);
-      } else {
+	for (var i=0; i<result.current.length; i++) {
+response.write(result['current'][i][1]+' \n');}
+response.end();      
+} else {
         console.log('No document(s) found with defined "find" criteria!');
       }
       //Close connection
