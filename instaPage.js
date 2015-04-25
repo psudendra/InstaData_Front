@@ -8,6 +8,35 @@ var server = http.createServer(
 function( request, response ){
   response.writeHead(200, {"Content-Type" : "text/html"});
 
+  var body = '\
+  <html>\
+  <head>\
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>\
+  <style>\
+    body {\
+      margin: auto;\
+      font: 14px Helvetica, Arial, sans-serif;\
+      color:#0000FF;\
+      text-align:center;\
+    }\
+\
+    a {\
+      color: #00B7FF;\
+    }\
+\
+    img {\
+      width: 200px;\
+      padding: 10px;\
+    }\
+\
+  </style>\
+  <title>InstaData</title>\
+  </head>\
+\
+  <body>\
+  <h1>Welcome to InstaData!</h1>';
+  response.write(body);
+
   //lets require/import the mongodb native drivers.
   var mongodb = require('mongodb');
 
