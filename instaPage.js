@@ -63,11 +63,12 @@ var server = http.createServer(
 
 		 		// Get the documents collection
 
-		 		var collection = db.collection('current');
+		 		var current = db.collection('current');
+		 		//var posts = db.collection('posts2');
 
 		 		//var result = [];
 
-		 		collection.findOne({},function (err, result) {
+		 		current.findOne({},function (err, result) {
 		 			if (err) {
 		 				console.log(err);
 		 			}
@@ -77,7 +78,11 @@ var server = http.createServer(
 				  		response.write(result["tag"] + '<br><br>');
 
 		 				for (var i=0; i<result.current.length; i++) {
-				  			response.write('<div class="image"><img src="' + result['current'][i][1] + '">' + '<br>' + "# of Likes: " + result['current'][i][0] + '</div>');
+		 					//console.log(result['current'][i][2]);
+
+				  			response.write('<div class="image"><img src="' + result['current'][i]['imageurl'] + '">' + 
+				  				'<br>Username: <a href="http://instagram.com/' + result['current'][i]["username"] + '">' + result['current'][i]["username"] + '</a>' +
+				  				'<br># of Likes: ' + result['current'][i]["likes"] + '</div>');
 				  		}
 
 				  		response.end();
@@ -89,6 +94,8 @@ var server = http.createServer(
 
 				  	db.close();
 				});
+
+				//console.log(stuff['current']);
 		 	};
 		});
 	}
