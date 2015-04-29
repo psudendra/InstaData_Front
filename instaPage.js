@@ -77,8 +77,13 @@ var server = http.createServer(
             <div class="row">\
                 <div class="col-xs-12">\
                 <h4>Get in touch</h4>\
-                <a class="contact-now-btn" href="mailto:psudendra@gmail.com">Contact Us Now</a>\
                 </div>\
+                <a href="mailto:priya.sudendra@colorado.edu">Project Manager: Priya Sudendra</a><br></br>\
+                <a href="mailto:rooneycm@colorado.edu">Front End Developer: Chris Rooney</a><br></br>\
+                <a href="mailto:rowells@colorado.edu">Front End Developer: Steve Rowells</a><br></br>\
+                <a href="mailto:rooneyk@colorado.edu">Front End Developer: Kyle Rooney</a><br></br>\
+                <a href="mailto:nodi2451@colorado.edu">Back End Developer: Noah Dillon</a><br></br>\
+                <a href="mailto:sheefali.tewari@colorado.edu">Back End Developer: Sheefali Tewari</a><br></br>\
             </div>\
         </div>\
     </footer>\
