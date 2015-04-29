@@ -28,8 +28,9 @@ var server = http.createServer(
 			position:relative;\
 			display:inline-block;\
 		}\
-		.row{\
+		.image-wrapper{\
 			margin:auto 0;\
+			text-align:center;\
 		}\
 		</style>\
 		\
@@ -85,6 +86,7 @@ var server = http.createServer(
                 <a href="mailto:nodi2451@colorado.edu">Back End Developer: Noah Dillon</a><br></br>\
                 <a href="mailto:sheefali.tewari@colorado.edu">Back End Developer: Sheefali Tewari</a><br></br>\
             </div>\
+            </div>\
         </div>\
     </footer>\
     <section class="footer-bottom">\
@@ -131,7 +133,7 @@ var server = http.createServer(
 
 		 			else if (result) {
 
-				  		response.write('<h3>Most Popular Tag: ' + result["tag"] + '</h3>');
+				  		response.write('<h3>Most Popular Tag: ' + result["tag"] + '</h3><div class="image-wrapper">');
 
 		 				for (var i=0; i<result.current.length; i++) {
 		 					//console.log(result['current'][i][2]);
