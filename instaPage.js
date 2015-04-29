@@ -12,18 +12,13 @@ var server = http.createServer(
 		<html>\
 		<head>\
 		<meta http-equiv="Content-Type" content="text/html" charset="UTF-8"/>\
+		\
+		<link href="http://fonts.googleapis.com/css?family=Lato:400,700|Kaushan+Script|Montserrat" rel="stylesheet" type="text/css">\
+		<link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/CUBigDataClass/Insta_Data/master/webpage/css/style.css">\
+		<script type="text/javascript" src="https://cdn.rawgit.com/CUBigDataClass/Insta_Data/master/webpage/js/modernizr.js"></script>\
+		\
+		<title>InstaData</title>\
 		<style>\
-		body {\
-			margin: auto;\
-			font: 14px Helvetica, Arial, sans-serif;\
-			color:#0000FF;\
-			text-align:center;\
-		}\
-		\
-		a {\
-			color: #00B7FF;\
-		}\
-		\
 		img {\
 			width: 200px;\
 			padding: 10px;\
@@ -34,11 +29,56 @@ var server = http.createServer(
 			display:inline-block;\
 		}\
 		</style>\
-		<title>InstaData</title>\
+		\
 		</head>\
 		\
 		<body>\
-		<h1>Welcome to InstaData!</h1>';
+		<header>\
+        <img src="https://cdn.rawgit.com/CUBigDataClass/Insta_Data/master/webpage/images/mountains.jpg" alt="Mountains">\
+        <div class="name fancy-font">\
+            The Force\
+        </div>\
+        <div class="titles">\
+            <h1>Hello! <span>Welcome to our page!</span></h1>\
+            <h2>Check out the most popular instagrams.</h2>\
+        </div>\
+        <div class="social">\
+            <a class="facebook" href="#">Facebook</a>\
+            <a class="twitter" href="#">Twitter</a>\
+            <a class="instagram" href="#">Instagram</a>\
+        </div>\
+    </header>\
+    <section class="instagram-wrap">\
+        <div class="container">\
+            <div class="row">\
+                <div class="col-xs-12">\
+                    <div class="instagram-content">\
+                        <div class="row photos-wrap">';
+
+		var bottom_body = '\
+		<br><br><br>\
+		</div>\
+		</div>\
+		</div>\
+        </div>\
+    </section>\
+		<footer>\
+        <div class="container">\
+            <div class="row">\
+                <div class="col-xs-12">\
+                <h4>Get in touch</h4>\
+                <p class="about-text">This website is being designed for our Big Data class at the University of Colorado. If you would like to get in touch with the team click the button below.</p>\
+                <a class="contact-now-btn" href="#">Contact Now</a>\
+                </div>\
+            </div>\
+        </div>\
+    </footer>\
+    <section class="footer-bottom">\
+        2015 &copy;. All rights reserved.\
+    </section>\
+    \
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>\
+    <script type="text/javascript" src="https://cdn.rawgit.com/CUBigDataClass/Insta_Data/master/webpage/js/bootstrap.js"></script>';
 
 		response.write(body);
 
@@ -64,7 +104,7 @@ var server = http.createServer(
 		 		// Get the documents collection
 
 		 		var current = db.collection('current');
-		 		//var posts = db.collection('posts2');
+		 		var posts = db.collection('posts2');
 
 		 		//var result = [];
 
@@ -75,15 +115,16 @@ var server = http.createServer(
 
 		 			else if (result) {
 
-				  		response.write(result["tag"] + '<br><br>');
+				  		response.write('<h3>Most Popular Tag: ' + result["tag"] + '</h3>');
 
 		 				for (var i=0; i<result.current.length; i++) {
 		 					//console.log(result['current'][i][2]);
 
-				  			response.write('<div class="image"><img src="' + result['current'][i]['imageurl'] + '">' + 
+				  			response.write('<span class="image"><img src="' + result['current'][i]['imageurl'] + '">' + 
 				  				'<br>Username: <a href="http://instagram.com/' + result['current'][i]["username"] + '">' + result['current'][i]["username"] + '</a>' +
-				  				'<br># of Likes: ' + result['current'][i]["likes"] + '</div>');
+				  				'<br># of Likes: ' + result['current'][i]["likes"] + '</span>');
 				  		}
+				  		response.write(bottom_body);
 
 				  		response.end();
 				  	}
@@ -94,8 +135,6 @@ var server = http.createServer(
 
 				  	db.close();
 				});
-
-				//console.log(stuff['current']);
 		 	};
 		});
 	}
