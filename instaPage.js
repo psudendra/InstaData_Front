@@ -43,7 +43,7 @@ var server = http.createServer(
             The Force\
         </div>\
         <div class="titles">\
-            <h1>Hello, <span>Welcome to our page!</span></h1>\
+            <h1>Hello, <span>Welcome to InstaData!</span></h1>\
             <h2>Check out the most popular instagrams.</h2>\
         </div>\
         <div class="social">\
