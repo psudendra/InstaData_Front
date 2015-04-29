@@ -39,7 +39,7 @@ var server = http.createServer(
             The Force\
         </div>\
         <div class="titles">\
-            <h1>Hello! <span>Welcome to our page!</span></h1>\
+            <h1>Hello, <span>Welcome to our page!</span></h1>\
             <h2>Check out the most popular instagrams.</h2>\
         </div>\
         <div class="social">\
@@ -74,7 +74,7 @@ var server = http.createServer(
         </div>\
     </footer>\
     <section class="footer-bottom">\
-        2015 &copy;. All rights reserved.\
+        2015 &copy; The Force. All rights reserved.\
     </section>\
     \
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>\
