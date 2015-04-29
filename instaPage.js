@@ -28,6 +28,9 @@ var server = http.createServer(
 			position:relative;\
 			display:inline-block;\
 		}\
+		.row{\
+			margin:auto 0;\
+		}\
 		</style>\
 		\
 		</head>\
@@ -51,6 +54,13 @@ var server = http.createServer(
     <section class="instagram-wrap">\
         <div class="container">\
             <div class="row">\
+	            <p class="about-text">\
+	            	<br><br>\
+	            	This project was done as a part of the Big Data course at the University of Colorado. We hoped to learn how the Instagram API worked and challenge ourselves to create a feature that is missing from the app itself. With these goals in mind, we decided to analyze Instagram data to find the most popular hashtags as well as the most liked pictures using those hashtags.\
+	            	<br><br>\
+	            	\
+	            	The entire application is hosted on an Amazon EC2 instance. We used python for our back-end scripts which get and parse data directly from the Instagram API. We collected recent media through our Mongo database and have another script parse this data to find the most used hashtag of the moment. This script also finds the most liked pictures which use that hashtag. For the front-end, we used Node.js to query the data from Mongo and output it to the user. Since we are continuously collecting data, the tag and images change throughout the day.\
+	            </p>\
                 <div class="col-xs-12">\
                     <div class="instagram-content">\
                         <div class="row photos-wrap">';
@@ -67,8 +77,7 @@ var server = http.createServer(
             <div class="row">\
                 <div class="col-xs-12">\
                 <h4>Get in touch</h4>\
-                <p class="about-text">This website is being designed for our Big Data class at the University of Colorado. If you would like to get in touch with the team click the button below.</p>\
-                <a class="contact-now-btn" href="#">Contact Now</a>\
+                <a class="contact-now-btn" href="mailto:psudendra@gmail.com">Contact Us Now</a>\
                 </div>\
             </div>\
         </div>\
