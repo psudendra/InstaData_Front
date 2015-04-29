@@ -103,12 +103,16 @@ var server = http.createServer(
 
 		 		// Get the documents collection
 
+<<<<<<< HEAD
 		 		var current = db.collection('current');
 		 		var posts = db.collection('posts2');
+=======
+		 		var collection = db.collection('current');
+>>>>>>> parent of 76fd2c9... Added usernames & links to users
 
 		 		//var result = [];
 
-		 		current.findOne({},function (err, result) {
+		 		collection.findOne({},function (err, result) {
 		 			if (err) {
 		 				console.log(err);
 		 			}
@@ -118,11 +122,15 @@ var server = http.createServer(
 				  		response.write('<h3>Most Popular Tag: ' + result["tag"] + '</h3>');
 
 		 				for (var i=0; i<result.current.length; i++) {
+<<<<<<< HEAD
 		 					//console.log(result['current'][i][2]);
 
 				  			response.write('<span class="image"><img src="' + result['current'][i]['imageurl'] + '">' + 
 				  				'<br>Username: <a href="http://instagram.com/' + result['current'][i]["username"] + '">' + result['current'][i]["username"] + '</a>' +
 				  				'<br># of Likes: ' + result['current'][i]["likes"] + '</span>');
+=======
+				  			response.write('<div class="image"><img src="' + result['current'][i][1] + '">' + '<br>' + "# of Likes: " + result['current'][i][0] + '</div>');
+>>>>>>> parent of 76fd2c9... Added usernames & links to users
 				  		}
 				  		response.write(bottom_body);
 
